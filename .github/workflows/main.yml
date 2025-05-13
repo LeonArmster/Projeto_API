@@ -1,0 +1,25 @@
+name: CI
+
+on: pull_request
+
+jobs:
+  Continuous=Integration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up python
+        id: setup-python
+        uses: action/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Instalar o Poetry via pip
+        run: pip install poetry
+
+      - name: Instalar  dependencias com o Poetry
+        run: poetry install
+
+      - name: Rodar minha rotina de testes com o Poetry
+        run: pytest -v test\teste.py
