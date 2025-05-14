@@ -36,3 +36,13 @@ def hello_word():
 
 def listar_produtos():
     return produtos
+
+
+
+@app.get("/produtos/{id}")
+
+def buscar_prutdo(id: int):
+    for produto in produtos:
+        if produto['id'] == id:
+            return produto
+    return {'Status': 404, 'Mensagem':'Produto não encontrado'}
